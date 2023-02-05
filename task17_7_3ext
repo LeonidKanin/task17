@@ -1,0 +1,26 @@
+# Задание 17.7.3 расширенное
+
+per_cent = {'ТКБ': 5.6, 'СКБ': 5.9, 'ВТБ': 4.28, 'СБЕР': 4.0}
+deposit = []
+
+# Ввод и валидация, только целые неотрицательные числа
+money = (input('money = '))
+boolean = money.isdigit()
+while boolean == False:
+    print('Ошибка ввода, повторите!\n')
+    money = (input('money = '))
+    boolean = money.isdigit()
+
+# Вычисление и вывод суммы накопленных средств за год вклада в каждом банке
+for x in per_cent:
+    deposit.append(int(per_cent[x]*int(money)/100))
+print('deposit =', deposit)
+
+# Поиск и вывод максимального значения и названия банка
+max_deposit = max(deposit)
+b = deposit.index(max(deposit)) # Индекс списка с максимальным значением
+banks_name = list(per_cent.keys()) # Список названий банков
+if max_deposit == 0:
+    print('Максимальная сумма, которую вы можете заработать - 0') # Без названия банка, если 0
+else:
+    print('Максимальная сумма, которую вы можете заработать -', max_deposit, 'в банке', banks_name[b])
